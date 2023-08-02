@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-toolbar>
+        <span> Crear Variedad </span>       
+    </mat-toolbar>
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="grabar()">
+                <mat-grid-list cols="2" rowHeight="70px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho alto">
+                            <mat-label>Variedad:</mat-label>
+                            <input matInput autocomplete="off" type="text" name="descripcion" formControlName="descripcion">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="3" >
+                        <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary" width="100%" class="ubicar">Grabar</button>
+                    </mat-grid-tile>                 
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho alto">
+                            <mat-label>Cant. Rama:</mat-label>
+                            <input matInput autocomplete="off" type="number" formControlName="cant_rama">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho alto">
+                            <mat-label>Cant. Malla:</mat-label>
+                            <input matInput autocomplete="off" type="number" formControlName="cant_malla">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho alto">
+                            <mat-label>Longitud:</mat-label>
+                            <input matInput autocomplete="off" type="number" formControlName="longitud">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="2" >
+                        <button mat-raised-button (click)="salir()" color="primary" width="100%" class="ubicar_ab"> Salir </button>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho alto">
+                            <mat-label>Días util:</mat-label>
+                            <input matInput autocomplete="off" type="number" formControlName="dias_util">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+  
+                    </mat-grid-tile>
+                </mat-grid-list>                        
+            </form>
+        </mat-card-content>
+    </mat-card>
+    
+</div>

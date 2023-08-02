@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <span>SAYA</span>
+    <span class="example-spacer" class="margen"></span>
+    <button mat-button [matMenuTriggerFor]="menu">Parámetros</button>
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="usuarios">Usuarios</button>
+    <button mat-menu-item routerLink="variedad">Variedades</button>
+    
+    </mat-menu>
+    <span class="example-spacer"></span>
+    <span class="example-spacer"></span>
+    <span class="example-spacer"></span>
+    <span class="izquierda"></span>
+    <button mat-icon-button routerLink="logout" color="black" aria-label="icon">
+        <mat-icon>logout</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+</mat-toolbar>

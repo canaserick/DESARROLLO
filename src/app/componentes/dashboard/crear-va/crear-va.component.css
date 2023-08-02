@@ -1,0 +1,21 @@
+.ancho  {
+    width : 80%
+}
+
+.alto {
+    height: 100%;
+}
+
+.ubicar {
+    position:absolute;
+    left: 0%;
+    top: 50%;
+    width: 100px;
+}
+
+.ubicar_ab {
+    position:absolute;
+    left: 0%;
+    top: 0%;
+    width: 100px;
+}
