@@ -3,6 +3,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VariedadService } from '../../../SERVICES/variedad.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+
+interface Items {
+  id : string,
+  descripcion: string,
+  longitud:    string,
+  cant_rama:   string,
+  cant_malla:  string,
+  dias_util:   string
+}; 
 
 @Component({
   selector: 'app-crear-va',
@@ -12,9 +22,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 export class CrearVaComponent implements OnInit{
-
+  
   form : FormGroup; 
   id = '';
+  item: Observable<Items>;
 
   constructor(private fb:FormBuilder, private VariedadService:VariedadService, 
     private router:Router, private _snackbar:MatSnackBar, private route:ActivatedRoute) {
@@ -100,15 +111,35 @@ export class CrearVaComponent implements OnInit{
 
  cargar(){
     console.log(this.id)
-    this.VariedadService.SelectOne(this.id).subscribe(
+    const data = {
+      "operacion" : "select",
+      "tabla" : "variedad",
+      "campos" : [
+          { "campo" : "*" }  
+      ],
+      "condiciones" : [
+          {
+              "campo" : "id",
+              "cond"  : "=",
+              "valor" : `${this.id}`,
+              "tipo"  : "int"
+          }
+      ]
+    };
+
+    this.VariedadService.Select(data).subscribe(
       {
         next:response=>{
-          if (response == 1) {
-            console.log(response);
-          } else {
-            //Mostramos mensaje de error                
-            this.form.reset();
-          }
+          console.log("Response", response);
+          this.item = response;
+          console.log("Item", this.item[0].descripcion);
+          console.log(this.item);
+          this.form.get('descripcion').setValue(this.item[0].descripcion);
+          this.form.get('longitud').setValue(this.item[0].longitud);
+          this.form.get('cant_rama').setValue(this.item[0].cant_rama);
+          this.form.get('cant_malla').setValue(this.item[0].cant_malla);
+          this.form.get('dias_util').setValue(this.item[0].dias_util);
+
         },
         error:error=>console.log(error)
       }  

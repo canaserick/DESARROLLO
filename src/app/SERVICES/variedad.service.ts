@@ -29,7 +29,7 @@ export class VariedadService {
           {
               "campo" : "id",
               "cond"  : "=",
-              "valor" : `"${id}"`,
+              "valor" : `${id}`,
               "tipo"  : "int"
           }
       ]
@@ -56,7 +56,8 @@ export class VariedadService {
               "tipo"  : "int"
           }
       ]
-    }
+    };
+    
     return this.http.post(this.url+'/delete', data);
   }
 
