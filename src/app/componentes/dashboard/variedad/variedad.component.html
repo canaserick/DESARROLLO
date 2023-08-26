@@ -8,7 +8,7 @@
     <mat-form-field>
         <mat-label>Filtro</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ingresa el texto" #input>
-      </mat-form-field>
+     </mat-form-field>
       
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
@@ -35,7 +35,7 @@
 
           <ng-container matColumnDef="dias">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Dias Util </th>
-            <td mat-cell *matCellDef="let row"> {{row.dias}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.dias_util}} </td>
           </ng-container>
 
            <ng-container matColumnDef="acciones">

@@ -64,6 +64,7 @@ export class VariedadComponent implements OnInit, AfterViewInit {
           //this.laVariedad=<any>response;
           this.dataSource = new MatTableDataSource(response);
           this.paginator.length = this.dataSource.data.length;
+       
         },
         error:error=>console.log(error)
       }  

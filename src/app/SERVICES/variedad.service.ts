@@ -1,5 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+export class flor{
+	id: number;
+	descripcion: string;
+	longitud: number;
+	cant_rama: number;
+	cant_malla: number;
+	dias_util: number;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +26,23 @@ export class VariedadService {
     return this.http.post<any>(this.url+'/login', data);
  }
  
-  Select(data){
-        return this.http.post<any>(this.url+'/select', data);
-  };
+  Select(data): Observable<flor[]>{
+        return this.http.post<any[]>(this.url+'/select', data).pipe(
+			map((response: any[])=>{
+				return response.map((Flor)=>{
+					const mappedFlor: flor={
+						id: Flor.id,
+						descripcion: Flor.descripcion,
+						longitud: Flor.longitud,
+						cant_rama: Flor.cant_rama,
+						cant_malla: Flor.cant_malla,
+						dias_util: Flor.dias_util
+					};
+					return mappedFlor;
+				});
+			})
+		);
+  }
 
   SelectOne(id:string){
     const data = {

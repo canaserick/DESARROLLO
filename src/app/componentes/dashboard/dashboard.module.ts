@@ -9,13 +9,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CrearVaComponent } from './crear-va/crear-va.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditarVaComponent } from './editar-va/editar-va.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     InicioComponent,
     NavbarComponent,
-    CrearVaComponent
+    CrearVaComponent,
+    EditarVaComponent
   ],
   imports: [
     CommonModule,
