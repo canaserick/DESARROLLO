@@ -4,6 +4,18 @@ import { VariedadService, flor } from '../../../SERVICES/variedad.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
+=======
+
+interface Items {
+  id : string,
+  descripcion: string,
+  longitud:    string,
+  cant_rama:   string,
+  cant_malla:  string,
+  dias_util:   string
+}; 
+>>>>>>> e383ce479e640ad5fdd2608d1a241961d7e031a4
 
 @Component({
   selector: 'app-crear-va',
@@ -12,10 +24,17 @@ import { Observable } from 'rxjs';
 })
 
 export class CrearVaComponent implements OnInit{
+<<<<<<< HEAD
 	
   form : FormGroup; 
   id = '';
   flores: flor[]=[];
+=======
+  
+  form : FormGroup; 
+  id = '';
+  item: Observable<Items>;
+>>>>>>> e383ce479e640ad5fdd2608d1a241961d7e031a4
 
   constructor(private fb:FormBuilder, private VariedadService:VariedadService, 
     private router:Router, private _snackbar:MatSnackBar, private route:ActivatedRoute) {
@@ -101,7 +120,12 @@ export class CrearVaComponent implements OnInit{
  }
 
  cargar(){
+<<<<<<< HEAD
 	 const data = {
+=======
+    console.log(this.id)
+    const data = {
+>>>>>>> e383ce479e640ad5fdd2608d1a241961d7e031a4
       "operacion" : "select",
       "tabla" : "variedad",
       "campos" : [
@@ -116,6 +140,7 @@ export class CrearVaComponent implements OnInit{
           }
       ]
     };
+<<<<<<< HEAD
     console.log(this.id)
     this.VariedadService.Select(data).subscribe(
 		(flores)=>{
@@ -135,6 +160,26 @@ export class CrearVaComponent implements OnInit{
       
     );  
     
+=======
+
+    this.VariedadService.Select(data).subscribe(
+      {
+        next:response=>{
+          console.log("Response", response);
+          this.item = response;
+          console.log("Item", this.item[0].descripcion);
+          console.log(this.item);
+          this.form.get('descripcion').setValue(this.item[0].descripcion);
+          this.form.get('longitud').setValue(this.item[0].longitud);
+          this.form.get('cant_rama').setValue(this.item[0].cant_rama);
+          this.form.get('cant_malla').setValue(this.item[0].cant_malla);
+          this.form.get('dias_util').setValue(this.item[0].dias_util);
+
+        },
+        error:error=>console.log(error)
+      }  
+    )  
+>>>>>>> e383ce479e640ad5fdd2608d1a241961d7e031a4
  }
 
 }
